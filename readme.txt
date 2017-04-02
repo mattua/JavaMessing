@@ -1,3 +1,12 @@
+To import the project from github into Eclipse
+
+> File> Import > from git
+
+Specify the github details, ensure you enter username and password, and select t
+the "import existing eclipse project"
+
+
+
 Locate your java  JDK
 	on mac type /usr/libexec/java_home
 	
