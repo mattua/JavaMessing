@@ -21,3 +21,14 @@ preferences>team>git>configuration>http.sslVerify=true
 
 
 
+
+
+
+
+
+TODO:
+
+Multithreading:
+
+race conditions
+thread status values
