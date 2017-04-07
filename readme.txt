@@ -15,6 +15,9 @@ run jvisualvm
 
 go to tools > plugins and install visual GC
 
+in eclipse -> make sure when configuring the remote push, go to 
+
+preferences>team>git>configuration>http.sslVerify=true
 
 
 

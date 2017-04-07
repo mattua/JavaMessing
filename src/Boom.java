@@ -21,7 +21,7 @@ public class Boom {
 			try {
 				bosh.sayBye(name, lock);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
+				// TODOS Auto-generated catch block
 				e.printStackTrace();
 			}
 			
