@@ -10,13 +10,48 @@ import java.io.Serializable;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+
+/*
+ https://www.youtube.com/watch?v=-zvWtSR08HA
+  
+ Need systems to be reactive, elastic, fault tolerant
+  
+ Processes 
+ Threads - control flow within the same process 
+ 	shared mutable state
+  
+  	Programmers become pruners of non-determinism
+  		-locking, callbacks etc
+  		
+  	Shared mutable state is a challenge
+  	
+ Distributed 
+ 	passing message back and forth between different machines
+ 	Networks are inherently unreliable
+  
+ AKKA is a toolkit and runtime - concurrent, distributed, message driven
+ 	-actor system
+ 	-remoting
+ 	-clustering
+ 	
+  Messages are serialised across the network - location transparent - 
+  	same code, for local vs distributed, only config change
+  	
+  	
+  
+ */
+//
+
+
 public class HelloAkkaJava {
     public static class Greet implements Serializable {}
     public static class WhoToGreet implements Serializable {
+    	
+    	
         public final String who;
         public WhoToGreet(String who) {
             this.who = who;
-        }
+}
     }
     public static class Greeting implements Serializable {
         public final String message;
