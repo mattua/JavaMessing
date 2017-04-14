@@ -20,6 +20,12 @@ in eclipse -> make sure when configuring the remote push, go to
 preferences>team>git>configuration>http.sslVerify=true
 
 
+------
+GIT CONFLICTS: to override and update
+Just do
+
+reset (hard) origin/master
+----------
 
 
 
