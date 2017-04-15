@@ -1,14 +1,13 @@
-import akka.actor.ActorRef;
-import akka.actor.UntypedActor;
-import akka.actor.ActorSystem;
-import akka.actor.Props;
-import akka.actor.Inbox;
-import scala.concurrent.duration.Duration;
-import scala.concurrent.duration.FiniteDuration;
-
 import java.io.Serializable;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
+
+import akka.actor.ActorRef;
+import akka.actor.ActorSystem;
+import akka.actor.Inbox;
+import akka.actor.Props;
+import akka.actor.UntypedActor;
+import scala.concurrent.duration.Duration;
 
 
 /*
@@ -37,32 +36,176 @@ import java.util.concurrent.TimeoutException;
   Messages are serialised across the network - location transparent - 
   	same code, for local vs distributed, only config change
   	
+  	Akka is asynchronous.
   	
+  	Akkas create other actors
+  		like parent actor supervise and handle errors in child actors
+  		
+  		
   
  */
 ///
 
 
 public class HelloAkkaJava {
-    public static class Greet implements Serializable {}
+   
+	public final class Question implements Serializable {
+		
+		
+		public static final long serialVersionUID =1;
+		
+		public final String msg;
+		
+		public Question(String msg){
+			
+			this.msg=msg;
+			
+		}
+
+		// Need this 
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + getOuterType().hashCode();
+			result = prime * result + ((msg == null) ? 0 : msg.hashCode());
+			return result;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Question other = (Question) obj;
+			if (!getOuterType().equals(other.getOuterType()))
+				return false;
+			if (msg == null) {
+				if (other.msg != null)
+					return false;
+			} else if (!msg.equals(other.msg))
+				return false;
+			return true;
+		}
+
+		private HelloAkkaJava getOuterType() {
+			return HelloAkkaJava.this;
+		}
+		
+		
+		
+	}
+	
+public final class Answer implements Serializable {
+		
+		
+		public static final long serialVersionUID =1;
+		
+		public final String msg;
+		
+		public Answer(String msg){
+			
+			this.msg=msg;
+			
+		}
+
+		// Need this 
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + getOuterType().hashCode();
+			result = prime * result + ((msg == null) ? 0 : msg.hashCode());
+			return result;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Question other = (Question) obj;
+			if (!getOuterType().equals(other.getOuterType()))
+				return false;
+			if (msg == null) {
+				if (other.msg != null)
+					return false;
+			} else if (!msg.equals(other.msg))
+				return false;
+			return true;
+		}
+
+		private HelloAkkaJava getOuterType() {
+			return HelloAkkaJava.this;
+		}
+		
+		
+		
+	}
+
+
+	
+	public static void testStudent() throws Exception {
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+	
+	public static class Greet implements Serializable {
+
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;}
+   
+    // Simple object representing person to send the Greeting
+    // to again just wraps a String
     public static class WhoToGreet implements Serializable {
     	
     	
-        public final String who;
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		public final String who;
         public WhoToGreet(String who) {
             this.who = who;
-}
+        }
     }
+    
+    
+    // Simple object that wraps a String message
     public static class Greeting implements Serializable {
-        public final String message;
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		public final String message;
         public Greeting(String message) {
             this.message = message;
         }
     }
 
+    /*
+     * onReceive is a method on the Actor superclass
+     * 
+     */
     public static class Greeter extends UntypedActor {
-        String greeting = "";
+        
+    	private String greeting = "";
 
+        @Override
         public void onReceive(Object message) {
             if (message instanceof WhoToGreet)
                 greeting = "hello, " + ((WhoToGreet) message).who;
@@ -74,9 +217,10 @@ public class HelloAkkaJava {
             else unhandled(message);
         }
     }
-
-    public static void main(String[] args) {
-        try {
+    
+    
+    public static void greeterTest() {
+    	try {
             // Create the 'helloakka' actor system
             final ActorSystem system = ActorSystem.create("helloakka");
 
@@ -109,7 +253,75 @@ public class HelloAkkaJava {
         } catch (TimeoutException ex) {
             System.out.println("Got a timeout waiting for reply from an actor");
             ex.printStackTrace();
-        }
+        }	
+    }
+
+    /*
+    public final classs boo
+    boobes
+    boobies
+    cattivo matt toms
+    soooo
+    where do I start?
+    		with you 
+    		sdkljflsdf
+    		greater.tell
+    		inbox.send(greeter, new Greet());
+    
+    nothing is happening
+ happen
+ happen
+ happen minchia
+ respond
+ now
+ asukdjsal;sa
+ ()
+ {
+	 asdhgas
+	 wasdhjaskd
+	 skdjaskd
+	 sdjkhjasldf
+	 {start
+		 
+	 }
+ }
+ */
+    
+    public static void questionTest(){
+    	
+    	
+    	
+    }
+    public static String getNadishaGreeting(){
+    	
+    	String greeting="Hello fuck off";
+    	return greeting;
+    	
+    }
+
+    public static String insult(String victim){
+    	
+    	String insult="fuck off "+ victim + " you smell";
+    	return insult;
+    	
+    }
+    
+    public static void main(String[] args) throws Exception {
+    
+    	
+    System.out.println(getNadishaGreeting());
+    System.out.println(insult("matt"));
+    System.out.println("ciao cattivo matt toms. shall we go do toon blast?");
+    System.out.println("this is such a pain in the ass...I dont know why people bother");
+
+ 
+    System.exit(0);
+
+    	
+    	
+    	
+    	
+    	greeterTest();
     }
 
     public static class GreetPrinter extends UntypedActor {
